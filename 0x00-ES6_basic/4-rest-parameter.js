@@ -1,3 +1,4 @@
 export default function returnHowManyArguments(...theArgs) {
-  console.log(theArgs.length);
+  return theArgs.length;
+  // console.log(theArgs.length); //this solution caused undefined param
 }
