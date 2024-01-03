@@ -1,4 +1,4 @@
 export default function concatArrays(array1, array2, string) {
-  let result = [...array1, ...array2, ...string.split('')];
-  return result
+  const result = [...array1, ...array2, ...string.split('')];// spread operator is like rest
+  return result;
 }
