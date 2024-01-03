@@ -3,4 +3,3 @@ export default function createEmployeesObject(departmentName, employees) {
   Object[departmentName] = employees;
   return Object;
 }
-  
