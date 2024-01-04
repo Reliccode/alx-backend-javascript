@@ -1,37 +1,31 @@
 import Currency from './3-currency';
 
-// eslint-disable no-unused-vars
 export default class Pricing {
-  // eslint-disable no-unused-vars
   constructor(amount, currency) {
     this._amount = amount;
     this._currency = currency;
   }
 
-  // Getter and setter for 'amount'
   get amount() {
     return this._amount;
   }
 
-  set amount(newAmount) {
-    this._amount = newAmount;
-  }
-
-  // Getter and setter for 'currency'
   get currency() {
     return this._currency;
   }
 
-  set currency(newCurrency) {
-    this._currency = newCurrency;
+  set amount(amount) {
+    this._amount = amount;
   }
 
-  // Method to display full price
+  set currency(currency) {
+    this._currency = currency;
+  }
+
   displayFullPrice() {
-    return `${this._amount} ${this._currency.name} (${this._currency.code})`;
+    return `${this._amount} ${new Currency(this._currency.code, this._currency.name).displayFullCurrency()}`;
   }
 
-  // Static method to convert price
   static convertPrice(amount, conversionRate) {
     return amount * conversionRate;
   }
