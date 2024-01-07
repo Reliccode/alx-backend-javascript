@@ -1,8 +1,10 @@
-import Building from './5-building';
-
-class SkyHighBuilding extends Building {
+export default class SkyHighBuilding extends Building {
   constructor(sqft, floors) {
     super(sqft);
+    console.log('SkyHighBuilding constructor called');
+    if (this.constructor !== Building && typeof this.evacuationWarningMessage !== 'function') {
+      throw new Error('Class extending Building must override evacuationWarningMessage');
+    }
     this._floors = floors;
   }
 
@@ -14,5 +16,3 @@ class SkyHighBuilding extends Building {
     return `Evacuate slowly the ${this._floors} floors`;
   }
 }
-
-export default SkyHighBuilding;
