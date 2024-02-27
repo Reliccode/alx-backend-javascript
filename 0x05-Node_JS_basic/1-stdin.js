@@ -1,31 +1,25 @@
 /**
- * Program prompts user for name. reads input & displays name
- * along with closing message
+ * This program prompts the user for their name, reads the input from the command line,
+ * and then displays the entered name along with a closing message.
  */
 
-// Display initial message
+// Display initial message to prompt for user input
 process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
-// set encoding for stdin stream to UTF-8
-process.stdin.setEncoding('utf-8');
+// Listen for 'readable' event on stdin (user input)
+process.stdin.on('readable', () => {
+  // Read input from stdin
+  const chunk = process.stdin.read();
 
-// listen for data events on user input
-process.stdin.on('data', (data) => {
-  // trim leading or trailing whitespace from user input
-  const input = data.trim();
-
-  // check if input is not empty
-  if (input) {
-    // display entered name along with message
-    console.log(`Your name is: ${input}`);
-  } else {
-    // display message if input empty
-    console.log('Your name is empty');
+  // Check if input is available
+  if (chunk) {
+    // Display the entered name along with a message
+    process.stdout.write(`Your name is: ${chunk}`);
   }
+});
 
-  // display closing message
-  console.log('This important software is now closing');
-
-  // exit the process
-  process.exit();
+// Listen for 'end' event on stdin (end of input)
+process.stdin.on('end', () => {
+  // Display closing message when the program ends
+  process.stdout.write('This important software is now closing\n');
 });
